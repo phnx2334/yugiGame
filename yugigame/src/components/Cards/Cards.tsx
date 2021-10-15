@@ -54,7 +54,7 @@ const Cards = () => {
             <p>DEF/2500</p>
           </IonCard>
           <p>23489234</p>
-            <p>c 1996 KAZUKI TAKAHASHI</p>
+          <p>c 1996 KAZUKI TAKAHASHI</p>
         </IonCardContent>
       </IonCard>
     </div>
