@@ -3,6 +3,7 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonContent,
   IonImg,
   IonItem,
   IonLabel,
@@ -12,20 +13,35 @@ import {
 import darkMagician from "../../assets/images/darkMagician.jpg";
 import dark from "../../assets/images/Dark.png";
 import level from "../../assets/images/Level.png";
+import cards from "../../assets/cards.json";
 import React from "react";
 
-const Cards = () => {
-  return (
-    <div>
-      <IonCard>
+interface cardData {
+  id: number;
+  title: string;
+  description: string;
+  type: string;
+  edition: string;
+  code: string;
+  hability: string;
+  atk: number;
+  def: number;
+  numberCode: string;
+  copyright: string;
+  imageRoute: string;
+}
+
+const Cards:React.FC = () => {
+  const cardItem = (cardData: cardData) => {
+    return (
+      <IonCard key={cardData.id}>
         <IonCardHeader>
           <IonCardTitle>
-            Dark magician
+            {cardData.title}
             <IonItem>
               <IonThumbnail slot="start">
                 <IonImg src={dark} />
               </IonThumbnail>
-              <IonLabel></IonLabel>
             </IonItem>
           </IonCardTitle>
         </IonCardHeader>
@@ -33,7 +49,6 @@ const Cards = () => {
           <IonThumbnail slot="start">
             <IonImg src={level} />
           </IonThumbnail>
-          <IonLabel></IonLabel>
         </IonItem>
 
         <IonCardContent>
@@ -43,21 +58,28 @@ const Cards = () => {
             </IonThumbnail>
             <IonLabel></IonLabel>
           </IonItem>
-          <p>1st edition</p>
-          <p>SDY 006</p>
+          <p>{cardData.edition}</p>
+          <p>{cardData.code}</p>
           <IonCard>
-            Keep close to Nature's heart... and break clear away, once in
-            awhile, and climb a mountain or spend a week in the woods. Wash your
-            spirit clean.
+            {cardData.description}
             <hr></hr>
-            <p>ATK/2500</p>
-            <p>DEF/2500</p>
+            <p>{`ATK/${cardData.atk}`}</p>
+            <p>{`DEF/${cardData.def}`}</p>
           </IonCard>
-          <p>23489234</p>
-          <p>c 1996 KAZUKI TAKAHASHI</p>
+          <p>{cardData.numberCode}</p>
+          <p>{cardData.copyright}</p>
         </IonCardContent>
       </IonCard>
-    </div>
+    );
+  };
+  return (
+    <>
+      <IonContent>
+        {cards.items.map((item: any) => {
+          return cardItem(item);
+        })}
+      </IonContent>
+    </>
   );
 };
 
