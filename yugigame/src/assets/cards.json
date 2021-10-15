@@ -1,0 +1,32 @@
+{
+  "cards": [
+    {
+      "id": "01",
+      "title": "Cards",
+      "description": "random text",
+      "type": "dark",
+      "edition": "1st Edition",
+      "code": "SDY-006",
+      "hability": "spellcaster",
+      "atk": "200",
+      "def": "200",
+      "numberCode": "523627",
+      "copyright": "c 1996 KAZUKI TAKAHASHI",
+      "imageRoute": "route"
+    },
+    {
+      "id": "02",
+      "title": "Cards",
+      "description": "random text",
+      "type": "dark",
+      "edition": "1st Edition",
+      "code": "SDY-006",
+      "hability": "spellcaster",
+      "atk": "200",
+      "def": "200",
+      "numberCode": "523627",
+      "copyright": "c 1996 KAZUKI TAKAHASHI",
+      "imageRoute": "route"
+    }
+  ]
+}
