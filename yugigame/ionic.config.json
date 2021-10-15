@@ -1,0 +1,7 @@
+{
+  "name": "yugigame",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
