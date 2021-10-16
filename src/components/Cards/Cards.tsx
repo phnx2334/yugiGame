@@ -41,7 +41,7 @@ const Cards: React.FC = () => {
 
   const cardContainer = (cardData: any) => {
     return (
-      <IonCol size="3" style={{ marginRight: "6rem" }}>
+      <IonCol size="6" style={{ padding: "0.5rem" }}>
         <div className={`yugi-card`} onClick={() => setFlipped(!flipped)}>
           <div className={`yugi-card-inner ${flipped ? "flipped" : ""}`}>
             {cardBack()}
@@ -63,7 +63,12 @@ const Cards: React.FC = () => {
         </IonCardHeader>
 
         <IonCardContent className="card-content">
-          <IonImg src={level} className="starImg" />
+          <div className="levelContainer">
+            <IonImg src={level} className="starImg" />
+            <IonImg src={level} className="starImg" />
+            <IonImg src={level} className="starImg" />
+          </div>
+
           <IonImg src={darkMagician} className="mainImg" />
 
           <div className="imgLabels">
@@ -72,13 +77,20 @@ const Cards: React.FC = () => {
           </div>
 
           <IonCard className="cardDescription">
-            {cardData.description}
+            <p className="description">{cardData.description}</p>
+
             <hr></hr>
-            <p>{`ATK/${cardData.atk}`}</p>
-            <p>{`DEF/${cardData.def}`}</p>
+
+            <div className="stats">
+              <p>{`ATK/${cardData.atk}`}</p>
+              <p>{`DEF/${cardData.def}`}</p>
+            </div>
           </IonCard>
-          <p>{cardData.numberCode}</p>
-          <p>{cardData.copyright}</p>
+
+          <div className="imgFooters">
+            <p>{cardData.numberCode}</p>
+            <p>{cardData.copyright}</p>
+          </div>
         </IonCardContent>
       </IonCard>
     );
