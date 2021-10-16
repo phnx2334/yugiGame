@@ -8,30 +8,30 @@ import {
 } from "@ionic/react";
 
 import darkMagician from "../../assets/images/darkMagician.jpg";
-import dark from "../../assets/images/Dark.png";
 import level from "../../assets/images/Level.png";
 import React, { useState } from "react";
 import "./Card.css";
-import { cardData } from "../../types/card";
+import { IcardData } from "../../types/card";
+import imageType from '../../types/CardImageTypes'
 
 interface propsTypes {
-  cardData: cardData;
+  cardData: IcardData;
 }
 
 const Cards: React.FC<propsTypes> = (props) => {
-  const [flipped, setFlipped] = useState(true);
+  const [flipped, setFlipped] = useState(false);
 
   const stars: HTMLIonImgElement[] = new Array(props.cardData.starCount).fill(
     <IonImg src={level} className="starImg" />
   );
 
-  const cardFront = (cardData: cardData) => {
+  const cardFront = (cardData: IcardData) => {
     return (
       <IonCard className="yugi-card-front">
         <IonCardHeader style={{ margin: "0px", padding: "0.5rem" }}>
           <IonCardTitle className="card-header">
             {cardData.title}
-            <IonImg src={dark} className="typeImg" />
+            <IonImg src={imageType[props.cardData.type]} className="typeImg" />
           </IonCardTitle>
         </IonCardHeader>
 

@@ -71,6 +71,7 @@
 .card-content {
   display: flex;
   flex-direction: column;
+  padding: 0 16px;
 }
 
 .mainImg {
@@ -111,10 +112,13 @@
 .stats {
   display: flex;
   justify-content: flex-end;
+  align-content: center;
+  margin: 0;
 }
 
 .stats p {
   font-size: 0.4rem !important;
+  margin: 0.2rem 0 0 0!important;
 }
 
 .imgFooters {
