@@ -27,6 +27,7 @@
   justify-content: space-between;
   font-weight: 700;
   color: #ffd700;
+  text-shadow: 1px 0 0 rgb(122, 85, 51)
 }
 
 .typeImg {
@@ -88,7 +89,7 @@
 }
 
 .cardDescription {
-  border: 3px solid brown;
+  border: 3px solid #AC734A;
   background-color: rgba(255, 255, 255, 0.8);
   margin: 0px;
   width: 100%;
