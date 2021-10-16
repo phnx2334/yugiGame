@@ -12,7 +12,7 @@ import level from "../../assets/images/Level.png";
 import React, { useState } from "react";
 import "./Card.css";
 import { IcardData } from "../../types/card";
-import imageType from '../../types/CardImageTypes'
+import imageType from "../../types/CardImageTypes";
 
 interface propsTypes {
   cardData: IcardData;
@@ -53,15 +53,8 @@ const Cards: React.FC<propsTypes> = (props) => {
             <p className="descriptionType">{`[${cardData.descriptionType.toUpperCase()}]`}</p>
             <p className="description">{cardData.description}</p>
 
-            <hr
-              style={{
-                backgroundColor: "black",
-                height: "0.5px",
-                margin: "1rem 0 0 0",
-              }}
-            ></hr>
-
             <div className="stats">
+              <hr></hr>
               <p>{`ATK/${cardData.atk} DEF/${cardData.def}`}</p>
             </div>
           </IonCard>
