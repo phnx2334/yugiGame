@@ -4,53 +4,26 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCol,
-  IonContent,
-  IonGrid,
   IonImg,
-  IonItem,
-  IonLabel,
-  IonRow,
-  IonThumbnail,
 } from "@ionic/react";
 
 import darkMagician from "../../assets/images/darkMagician.jpg";
 import dark from "../../assets/images/Dark.png";
 import level from "../../assets/images/Level.png";
-import cards from "../../assets/cards.json";
 import React, { useState } from "react";
-import "./Cards.css";
+import "./Card.css";
+import { cardData } from "../../types/card";
 
-interface cardData {
-  id: number;
-  title: string;
-  description: string;
-  type: string;
-  starCount: number;
-  edition: string;
-  code: string;
-  hability: string;
-  atk: number;
-  def: number;
-  numberCode: string;
-  copyright: string;
-  imageRoute: string;
+interface propsTypes {
+  cardData: cardData;
 }
 
-const Cards: React.FC = () => {
-  const [flipped, setFlipped] = useState(false);
+const Cards: React.FC<propsTypes> = (props) => {
+  const [flipped, setFlipped] = useState(true);
 
-  const cardContainer = (cardData: any) => {
-    return (
-      <IonCol size="6" style={{ padding: "0.5rem" }}>
-        <div className={`yugi-card`} onClick={() => setFlipped(!flipped)}>
-          <div className={`yugi-card-inner ${flipped ? "flipped" : ""}`}>
-            {cardBack()}
-            {cardFront(cardData)}
-          </div>
-        </div>
-      </IonCol>
-    );
-  };
+  const stars: HTMLIonImgElement[] = new Array(props.cardData.starCount).fill(
+    <IonImg src={level} className="starImg" />
+  );
 
   const cardFront = (cardData: cardData) => {
     return (
@@ -64,9 +37,9 @@ const Cards: React.FC = () => {
 
         <IonCardContent className="card-content">
           <div className="levelContainer">
-            <IonImg src={level} className="starImg" />
-            <IonImg src={level} className="starImg" />
-            <IonImg src={level} className="starImg" />
+            {stars.map((star) => {
+              return star;
+            })}
           </div>
 
           <IonImg src={darkMagician} className="mainImg" />
@@ -77,13 +50,19 @@ const Cards: React.FC = () => {
           </div>
 
           <IonCard className="cardDescription">
+            <p className="descriptionType">{`[${cardData.descriptionType.toUpperCase()}]`}</p>
             <p className="description">{cardData.description}</p>
 
-            <hr></hr>
+            <hr
+              style={{
+                backgroundColor: "black",
+                height: "0.5px",
+                margin: "1rem 0 0 0",
+              }}
+            ></hr>
 
             <div className="stats">
-              <p>{`ATK/${cardData.atk}`}</p>
-              <p>{`DEF/${cardData.def}`}</p>
+              <p>{`ATK/${cardData.atk} DEF/${cardData.def}`}</p>
             </div>
           </IonCard>
 
@@ -102,15 +81,14 @@ const Cards: React.FC = () => {
 
   return (
     <>
-      <IonContent style={{ padding: "0px", margin: "0px" }}>
-        <IonGrid style={{ padding: "0px", margin: "0px" }}>
-          <IonRow>
-            {cards.items.map((item: any) => {
-              return cardContainer(item);
-            })}
-          </IonRow>
-        </IonGrid>
-      </IonContent>
+      <IonCol size="6" style={{ padding: "0.5rem" }}>
+        <div className={`yugi-card`} onClick={() => setFlipped(!flipped)}>
+          <div className={`yugi-card-inner ${flipped ? "flipped" : ""}`}>
+            {cardBack()}
+            {cardFront(props.cardData)}
+          </div>
+        </div>
+      </IonCol>
     </>
   );
 };
