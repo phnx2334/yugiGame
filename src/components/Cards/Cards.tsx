@@ -14,7 +14,8 @@ import darkMagician from "../../assets/images/darkMagician.jpg";
 import dark from "../../assets/images/Dark.png";
 import level from "../../assets/images/Level.png";
 import cards from "../../assets/cards.json";
-import React from "react";
+import React, { useState } from "react";
+import "./Cards.css";
 
 interface cardData {
   id: number;
@@ -31,10 +32,12 @@ interface cardData {
   imageRoute: string;
 }
 
-const Cards:React.FC = () => {
-  const cardItem = (cardData: cardData) => {
+const Cards: React.FC = () => {
+  const [flipped, setFlipped] = useState(false);
+
+  const cardFront = (cardData: cardData) => {
     return (
-      <IonCard key={cardData.id}>
+      <IonCard className="yugi-card-front">
         <IonCardHeader>
           <IonCardTitle>
             {cardData.title}
@@ -72,11 +75,33 @@ const Cards:React.FC = () => {
       </IonCard>
     );
   };
+
+  const cardBack = () => {
+    return <IonCard className="yugi-card-back"></IonCard>;
+  };
+
+  const cardContainer = (cardData: any) => {
+    return (
+      <div
+        className={`yugi-card`}
+        onClick={() => setFlipped(!flipped)}
+      >
+        <div className={`yugi-card-inner`}>
+
+        {cardBack()}
+        {cardFront(cardData)}
+
+        </div>
+      
+      </div>
+    );
+  };
+
   return (
     <>
       <IonContent>
         {cards.items.map((item: any) => {
-          return cardItem(item);
+          return cardContainer(item);
         })}
       </IonContent>
     </>
