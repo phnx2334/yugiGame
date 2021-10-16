@@ -50,7 +50,7 @@ const Cards: React.FC<propsTypes> = (props) => {
           </div>
 
           <IonCard className="cardDescription">
-            <p className="descriptionType">{`[${cardData.descriptionType.toUpperCase()}]`}</p>
+            <p className="hability">{`[${cardData.hability.toUpperCase()}]`}</p>
             <p className="description">{cardData.description}</p>
 
             <div className="stats">

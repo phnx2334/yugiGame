@@ -20,7 +20,7 @@ const Header: React.FC<propsTypes> = (props) => {
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="end">
-          <IonButton
+          {props.title === "Cards" && <IonButton
             onClick={() => {
               window.location.reload();
             }}
@@ -29,7 +29,7 @@ const Header: React.FC<propsTypes> = (props) => {
             color="primary"
           >
             Shuffle
-          </IonButton>
+          </IonButton>}
         </IonButtons>
         <IonTitle>{props.title}</IonTitle>
       </IonToolbar>

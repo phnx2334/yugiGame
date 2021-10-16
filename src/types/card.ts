@@ -1,7 +1,6 @@
 export interface IcardData {
     id: number;
     title: string;
-    descriptionType: string;
     description: string;
     type: string;
     starCount: number;
