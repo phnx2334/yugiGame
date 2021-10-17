@@ -18,11 +18,9 @@ const Routes: React.FC = (): JSX.Element => {
             <Redirect to="/page/cards" />
           </Route>
           <Route path="/page/cards" exact={true}>
-            <Header title="Cards" />
             <Main />
           </Route>
           <Route path="/page/crud" exact={true}>
-            <Header title="CRUD" />
             <CRUD />
           </Route>
         </IonRouterOutlet>
