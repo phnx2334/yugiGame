@@ -12,12 +12,12 @@ import {
 
 import { useLocation } from "react-router-dom";
 import {
-  heartOutline,
-  heartSharp,
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
+  copyOutline,
+  copySharp,
+  newspaperOutline,
+  newspaperSharp,
+  settingsOutline,
+  settingsSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -32,20 +32,20 @@ const appPages: AppPage[] = [
   {
     title: "Cards",
     url: "/page/cards",
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    iosIcon: copyOutline,
+    mdIcon: copySharp,
   },
   {
     title: "CRUD",
     url: "/page/crud",
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    iosIcon: newspaperOutline,
+    mdIcon: newspaperSharp,
   },
   {
     title: "Config",
     url: "/page/condig",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    iosIcon: settingsOutline,
+    mdIcon: settingsSharp,
   },
 ];
 
@@ -56,8 +56,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>Yu-Gi-Oh Dare!</IonListHeader>
+          <IonNote>Despedida de soltero de Adolfo</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>

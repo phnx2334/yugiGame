@@ -1,10 +1,11 @@
 import { IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import React from "react";
-import Cards from "./components/Cards/Cards";
-
+import Header from "./components/Header/Header";
+import Main from "./pages/Main";
+import CRUD from "./components/CRUD/CRUD";
 
 const Routes: React.FC = (): JSX.Element => {
   return (
@@ -14,7 +15,15 @@ const Routes: React.FC = (): JSX.Element => {
 
         <IonRouterOutlet id="main">
           <Route path="/" exact={true}>
-            <Cards/>
+            <Redirect to="/page/cards" />
+          </Route>
+          <Route path="/page/cards" exact={true}>
+            <Header title="Cards" />
+            <Main />
+          </Route>
+          <Route path="/page/crud" exact={true}>
+            <Header title="CRUD" />
+            <CRUD />
           </Route>
         </IonRouterOutlet>
       </IonSplitPane>
