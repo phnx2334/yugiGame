@@ -74,6 +74,32 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-background-color: #292929;
+  --ion-background-color-rgb: 41,41,41;
+
+  --ion-text-color: #f0eaea;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-color-step-50: #272727;
+  --ion-color-step-100: #252525;
+  --ion-color-step-150: #232323;
+  --ion-color-step-200: #212121;
+  --ion-color-step-250: #1f1f1f;
+  --ion-color-step-300: #1d1d1d;
+  --ion-color-step-350: #1b1b1b;
+  --ion-color-step-400: #f0eaea;
+  --ion-color-step-450: #171717;
+  --ion-color-step-500: #151515;
+  --ion-color-step-550: #121212;
+  --ion-color-step-600: #101010;
+  --ion-color-step-650: #0e0e0e;
+  --ion-color-step-700: #0c0c0c;
+  --ion-color-step-750: #0a0a0a;
+  --ion-color-step-800: #080808;
+  --ion-color-step-850: #060606;
+  --ion-color-step-900: #040404;
+  --ion-color-step-950: #020202;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -237,4 +263,9 @@ http://ionicframework.com/docs/theming/ */
 body{
   box-sizing: border-box;
   background-color: gray;
+}
+
+@font-face {
+  font-family: 'YuGi';
+  src: local('YuGi'), url(./fonts/1.ttf) format('truetype');
 }

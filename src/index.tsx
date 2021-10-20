@@ -23,6 +23,10 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+
+document.body.classList.add('dark')
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

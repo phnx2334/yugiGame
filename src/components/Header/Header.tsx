@@ -20,16 +20,16 @@ const Header: React.FC<propsTypes> = (props) => {
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="end">
-          <IonButton
+          {props.title === "Cards" && <IonButton
             onClick={() => {
               window.location.reload();
             }}
             shape="round"
-            fill="outline"
-            color="primary"
+            fill="solid"
+            color="warning"
           >
             Shuffle
-          </IonButton>
+          </IonButton>}
         </IonButtons>
         <IonTitle>{props.title}</IonTitle>
       </IonToolbar>
