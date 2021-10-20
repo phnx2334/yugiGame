@@ -25,8 +25,8 @@ const Header: React.FC<propsTypes> = (props) => {
               window.location.reload();
             }}
             shape="round"
-            fill="outline"
-            color="primary"
+            fill="solid"
+            color="warning"
           >
             Shuffle
           </IonButton>}

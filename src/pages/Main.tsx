@@ -10,10 +10,10 @@ const Main: React.FC = () => {
   const [data, setData] = useState<IcardData[]>([]);
 
   useEffect(() => {
-    /*  if (!data.length) {
+     if (data.length <= 0) {
       getCards();
-    } */
-    setData(cards.items);
+    }
+    /* setData(cards.items); */
   }, []);
 
   const getCards = async () => {
@@ -45,7 +45,7 @@ const Main: React.FC = () => {
         <IonGrid>
           <IonRow>
             {data.map((item: IcardData) => {
-              return <Card key={item.id} cardData={item} />;
+              return <Card key={item._id} cardData={item} />;
             })}
           </IonRow>
         </IonGrid>

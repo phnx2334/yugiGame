@@ -1,9 +1,10 @@
 export interface IcardData {
-  id: number;
+  id?: number;
+  _id?: number;
   title: string;
   type: string;
   starCount: number;
-  imageRoute: string;
+  imageRoute: string | ArrayBuffer | null;
   edition: string;
   code: string;
   hability: string;

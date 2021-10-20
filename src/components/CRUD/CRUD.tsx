@@ -1,101 +1,191 @@
 import {
   IonContent,
   IonItem,
-  IonLabel,
   IonInput,
   IonItemDivider,
   IonList,
   IonPage,
+  IonImg,
+  IonButton,
+  IonTextarea,
 } from "@ionic/react";
 import React, { useState } from "react";
 import Header from "../Header/Header";
+import imgTypes from "../../types/CardImageTypes";
+import "./CRUD.css";
+import { addCard } from "../../api/mongo";
+import { IcardData } from "../../types/card";
+
+interface image {
+  image: null | string;
+  base: string | ArrayBuffer | null;
+}
 
 const CRUD: React.FC = () => {
-  const [text, setText] = useState<string>();
-  const [number, setNumber] = useState<number>();
+  const [title, setTitle] = useState<string>();
+  const [type, setType] = useState<string>();
+  const [difficulty, setDifficulty] = useState<number>();
+  const [image, setImage] = useState<image>({
+    image: null,
+    base: null,
+  });
+  const [hability, setHability] = useState<string>();
+  const [description, setDescription] = useState<string>();
+  const [attack, setAttack] = useState<number>();
+  const [defense, setDefense] = useState<number>();
+  const [copyright, setCopyright] = useState<string>();
+
+  const keys = Object.keys(imgTypes);
+
+  const onFileUpload = (event: any) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        setImage({
+          ...image,
+          image: URL.createObjectURL(img),
+          base: reader.result,
+        });
+      };
+      reader.readAsDataURL(img);
+    }
+  };
+
+  const onSubmit = async () => {
+    if (
+      title &&
+      type &&
+      difficulty &&
+      image &&
+      hability &&
+      description &&
+      attack &&
+      defense &&
+      copyright
+    ) {
+      const body: IcardData = {
+        title: title,
+        type: type,
+        starCount: difficulty,
+        imageRoute: image.base,
+        edition: "1st Edition",
+        code: "SDY-006",
+        hability: hability,
+        description: description,
+        atk: attack,
+        def: defense,
+        numberCode: Date.now().toString(),
+        copyright: `©2021 ${copyright}`,
+      };
+      await addCard(body);
+
+      setTitle("");
+      setType("");
+      setDifficulty(undefined);
+      setImage({ image: null, base: null });
+      setHability("");
+      setDescription("");
+      setAttack(undefined);
+      setDefense(undefined);
+      setCopyright("");
+    }
+  };
+
   return (
     <IonPage>
       <Header title={"CRUD"}></Header>
-      <IonContent>
+      <IonContent className="crud-container">
         <IonList>
           <IonItemDivider>Title</IonItemDivider>
           <IonItem>
             <IonInput
               clearInput
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
+              value={title}
+              placeholder="Place a cool title for the challenge!"
+              onIonChange={(e) => setTitle(e.detail.value!)}
             ></IonInput>
           </IonItem>
           <IonItemDivider>Type</IonItemDivider>
-          <IonItem>
-            <IonInput
-              clearInput
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
-            ></IonInput>
-          </IonItem>
+
+          <div className="card-types-list">
+            {keys.map((key, index) => {
+              return (
+                <IonButton
+                  key={key}
+                  className="type-button"
+                  fill={key === type ? "outline" : "clear"}
+                  onClick={() => setType(key)}
+                >
+                  <IonImg src={imgTypes[key]} className="img-type" />
+                </IonButton>
+              );
+            })}
+          </div>
 
           <IonItemDivider>Difficulty</IonItemDivider>
           <IonItem>
             <IonInput
               clearInput
               type="number"
-              value={number}
-              placeholder="Enter Number"
-              onIonChange={(e) => setNumber(parseInt(e.detail.value!, 10))}
+              value={difficulty}
+              placeholder="How hard is this gonna be?"
+              onIonChange={(e) => setDifficulty(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
 
           <IonItemDivider>Image</IonItemDivider>
-          <IonItem>
-            <IonInput
-              clearInput
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
-            ></IonInput>
-          </IonItem>
+          <div className="image-load">
+            <div>
+              {image.image ? (
+                <object
+                  id="svgimg"
+                  data={image.image}
+                  type="image/svg+xml"
+                ></object>
+              ) : (
+                <div className="img-frame" role="img"></div>
+              )}
+            </div>
 
-          <IonItemDivider>Edition</IonItemDivider>
-          <IonItem>
-            <IonInput
-              disabled
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
-            ></IonInput>
-          </IonItem>
-
-          <IonItemDivider>Code</IonItemDivider>
-          <IonItem>
-            <IonInput
-              disabled
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
-            ></IonInput>
-          </IonItem>
+            <>
+              <input
+                id="inputFile"
+                hidden
+                type="file"
+                accept="image/*"
+                onChange={(e) => onFileUpload(e)}
+              />
+              <IonButton
+                color="primary"
+                onClick={() => {
+                  document.getElementById("inputFile")?.click();
+                }}
+              >
+                Upload image
+              </IonButton>
+            </>
+          </div>
 
           <IonItemDivider>Hability</IonItemDivider>
           <IonItem>
             <IonInput
               clearInput
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
+              value={hability}
+              placeholder="What kind of challenge is this?"
+              onIonChange={(e) => setHability(e.detail.value!)}
             ></IonInput>
           </IonItem>
 
           <IonItemDivider>Description</IonItemDivider>
           <IonItem>
-            <IonInput
-              clearInput
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
-            ></IonInput>
+            <IonTextarea
+              value={description}
+              placeholder="Describe the challenge"
+              onIonChange={(e) => setDescription(e.detail.value!)}
+            ></IonTextarea>
           </IonItem>
 
           <IonItemDivider>Attack</IonItemDivider>
@@ -103,9 +193,9 @@ const CRUD: React.FC = () => {
             <IonInput
               clearInput
               type="number"
-              value={number}
+              value={attack}
               placeholder="Enter Number"
-              onIonChange={(e) => setNumber(parseInt(e.detail.value!, 10))}
+              onIonChange={(e) => setAttack(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
 
@@ -114,32 +204,25 @@ const CRUD: React.FC = () => {
             <IonInput
               clearInput
               type="number"
-              value={number}
+              value={defense}
               placeholder="Enter Number"
-              onIonChange={(e) => setNumber(parseInt(e.detail.value!, 10))}
-            ></IonInput>
-          </IonItem>
-
-          <IonItemDivider>Number</IonItemDivider>
-          <IonItem>
-            <IonInput
-              disabled
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
+              onIonChange={(e) => setDefense(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
 
           <IonItemDivider>Copyright</IonItemDivider>
           <IonItem>
             <IonInput
-              disabled
-              value={text}
-              placeholder="Enter Input"
-              onIonChange={(e) => setText(e.detail.value!)}
+              value={copyright}
+              placeholder="Place your name here"
+              onIonChange={(e) => setCopyright(e.detail.value!)}
             ></IonInput>
           </IonItem>
         </IonList>
+
+        <IonButton id="submitButton" onClick={() => onSubmit()}>
+          Save Challenge
+        </IonButton>
       </IonContent>
     </IonPage>
   );

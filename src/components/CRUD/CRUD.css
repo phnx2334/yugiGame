@@ -1,0 +1,54 @@
+.crud-container  {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background:transparent;
+}
+
+.card-types-list {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  overflow-x: scroll;
+  padding: 10px !important;
+  overflow-y: hidden;
+}
+
+.type-button {
+  display: flex;
+  width: fit-content;
+}
+
+.img-type {
+  padding: 2px;
+  width: 40px;
+}
+
+.img-frame {
+  width: 110px;
+  height: 120px;
+  margin: 5px;
+  border: 1px solid white;
+}
+
+.image-load {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#svgimg {
+  width: 110px;
+  margin: 5px;
+  max-height: 120px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+#submitButton{
+  display: flex;
+  align-self: center;
+}

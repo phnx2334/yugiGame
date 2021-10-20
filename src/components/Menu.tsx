@@ -36,8 +36,14 @@ const appPages: AppPage[] = [
     mdIcon: copySharp,
   },
   {
-    title: "CRUD",
+    title: "Create Card",
     url: "/page/crud",
+    iosIcon: newspaperOutline,
+    mdIcon: newspaperSharp,
+  },
+  {
+    title: "Delete Card",
+    url: "/page/crudDel",
     iosIcon: newspaperOutline,
     mdIcon: newspaperSharp,
   },
