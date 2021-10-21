@@ -24,8 +24,8 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
-  color: #ffd700;
-  text-shadow: 1px 0 0 rgb(122, 85, 51);
+  color: #524500;
+  text-shadow: 0.5px 0 0 rgba(0, 0, 0, 0.2);
   font-family: YuGi, serif;
 }
 
@@ -71,7 +71,7 @@
 .card-content {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
 .mainImg {
@@ -98,19 +98,22 @@
   background-color: rgba(255, 255, 255, 0.3);
   margin: 0;
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   color: black;
 }
 
 .hability {
   font-size: 0.4rem !important;
   font-weight: 700 !important;
+  margin: 0px!important;
 }
 
 .description {
   margin: 0 0 0 1px !important;
-  font-size: 0.5rem !important;
+  font-size: 0.6rem !important;
   font-style: italic !important;
+  font-stretch:condensed;
+  line-height:normal!important;
 }
 
 .stats {
@@ -132,7 +135,7 @@
 
 .stats p {
   font-size: 0.4rem !important;
-  margin: 0.2rem 0 0 0 !important;
+  margin: 0.2rem 0.2rem 0 0 !important;
 }
 
 .imgFooters {

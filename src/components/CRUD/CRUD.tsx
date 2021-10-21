@@ -8,6 +8,7 @@ import {
   IonImg,
   IonButton,
   IonTextarea,
+  useIonToast 
 } from "@ionic/react";
 import React, { useState } from "react";
 import Header from "../Header/Header";
@@ -22,6 +23,9 @@ interface image {
 }
 
 const CRUD: React.FC = () => {
+
+  const [present, dismiss] = useIonToast();
+
   const [title, setTitle] = useState<string>();
   const [type, setType] = useState<string>();
   const [difficulty, setDifficulty] = useState<number>();
@@ -91,24 +95,40 @@ const CRUD: React.FC = () => {
       setAttack(undefined);
       setDefense(undefined);
       setCopyright("");
+
+      present({
+        position:"middle",
+        message: 'The card was created!',
+        duration:1000,
+        cssClass:"toast"
+      })
+     
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+     
     }
+
+    
   };
 
   return (
     <IonPage>
-      <Header title={"CRUD"}></Header>
+      <Header title={"Create your card"}></Header>
       <IonContent className="crud-container">
         <IonList>
           <IonItemDivider>Title</IonItemDivider>
           <IonItem>
             <IonInput
               clearInput
+              maxlength={19}
+              type="text"
               value={title}
               placeholder="Place a cool title for the challenge!"
               onIonChange={(e) => setTitle(e.detail.value!)}
             ></IonInput>
           </IonItem>
-          <IonItemDivider>Type</IonItemDivider>
+          <IonItemDivider>Type (swipe left for more)</IonItemDivider>
 
           <div className="card-types-list">
             {keys.map((key, index) => {
@@ -118,6 +138,7 @@ const CRUD: React.FC = () => {
                   className="type-button"
                   fill={key === type ? "outline" : "clear"}
                   onClick={() => setType(key)}
+                  
                 >
                   <IonImg src={imgTypes[key]} className="img-type" />
                 </IonButton>
@@ -129,9 +150,12 @@ const CRUD: React.FC = () => {
           <IonItem>
             <IonInput
               clearInput
+              min="1"
+              max="10"
+              maxlength={2}
               type="number"
               value={difficulty}
-              placeholder="How hard is this gonna be?"
+              placeholder="From 1 to 10, how hard is this gonna be?"
               onIonChange={(e) => setDifficulty(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
@@ -166,6 +190,7 @@ const CRUD: React.FC = () => {
               >
                 Upload image
               </IonButton>
+              <p>Memes are best. Squared images preferred. Max 130 x 130px and 60kb.</p>
             </>
           </div>
 
@@ -174,7 +199,9 @@ const CRUD: React.FC = () => {
             <IonInput
               clearInput
               value={hability}
-              placeholder="What kind of challenge is this?"
+              type="text"
+              maxlength={15}
+              placeholder="Which skill is (most) needed to achieve this?"
               onIonChange={(e) => setHability(e.detail.value!)}
             ></IonInput>
           </IonItem>
@@ -183,7 +210,8 @@ const CRUD: React.FC = () => {
           <IonItem>
             <IonTextarea
               value={description}
-              placeholder="Describe the challenge"
+              maxlength={160}
+              placeholder="Describe the challenge in less than 160 characters. Include a punishment in the end."
               onIonChange={(e) => setDescription(e.detail.value!)}
             ></IonTextarea>
           </IonItem>
@@ -194,7 +222,7 @@ const CRUD: React.FC = () => {
               clearInput
               type="number"
               value={attack}
-              placeholder="Enter Number"
+              placeholder="Enter 4 digit (random) number"
               onIonChange={(e) => setAttack(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
@@ -205,15 +233,17 @@ const CRUD: React.FC = () => {
               clearInput
               type="number"
               value={defense}
-              placeholder="Enter Number"
+              placeholder="Enter 4 digit (random) number"
               onIonChange={(e) => setDefense(parseInt(e.detail.value!, 10))}
             ></IonInput>
           </IonItem>
 
-          <IonItemDivider>Copyright</IonItemDivider>
+          <IonItemDivider>Copyright/Author</IonItemDivider>
           <IonItem>
             <IonInput
               value={copyright}
+              type="text"
+              maxlength={10}
               placeholder="Place your name here"
               onIonChange={(e) => setCopyright(e.detail.value!)}
             ></IonInput>

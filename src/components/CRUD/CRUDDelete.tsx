@@ -5,6 +5,7 @@ import {
   IonLabel,
   IonPage,
   IonIcon,
+  useIonToast
 } from "@ionic/react";
 import { trashBinSharp, trashBinOutline } from "ionicons/icons";
 import React, { useState, useEffect } from "react";
@@ -13,6 +14,7 @@ import Header from "../Header/Header";
 
 const CRUDDelete = () => {
   const [cards, setCards] = useState([]);
+  const [present, dismiss] = useIonToast();
 
   const getCards = async () => {
     let response;
@@ -58,6 +60,15 @@ const CRUDDelete = () => {
         });
 
         setCards(filtered);
+        present({
+          position:"middle",
+          message: 'The card was deleted!',
+          duration:1000,
+          cssClass:"toast"
+        })
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
       }
     } catch (error) {
       console.log("error obtaining cards", error);

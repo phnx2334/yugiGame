@@ -5,6 +5,10 @@
   background: transparent;
 }
 
+.toast{
+  text-align: center;
+}
+
 .card-types-list {
   display: flex;
   flex-direction: row;

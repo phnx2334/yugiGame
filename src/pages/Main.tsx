@@ -10,6 +10,7 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     getCards();
+    console.log("entered use effect")
   }, []);
 
   const getCards = async () => {
@@ -36,17 +37,20 @@ const Main: React.FC = () => {
     const shuffled = shuffleArray(cards ?? data);
     setData(shuffled);
   };
+  const renderCards = () => {
+    if (data.length > 0) {
+      return data.map((item: IcardData) => {
+        return <Card key={item._id} cardData={item} />;
+      });
+    }
+  };
 
   return (
     <IonPage>
       <Header title={"Cards"} shuffle={shuffle}></Header>
       <IonContent>
         <IonGrid>
-          <IonRow>
-            {data.map((item: IcardData) => {
-              return <Card key={item._id} cardData={item} />;
-            })}
-          </IonRow>
+          <IonRow>{renderCards()}</IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>
