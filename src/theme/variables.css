@@ -96,7 +96,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-step-650: #0e0e0e;
   --ion-color-step-700: #0c0c0c;
   --ion-color-step-750: #0a0a0a;
-  --ion-color-step-800: #080808;
+  --ion-color-step-800: rgb(167, 164, 164);
   --ion-color-step-850: #060606;
   --ion-color-step-900: #040404;
   --ion-color-step-950: #020202;
@@ -263,7 +263,18 @@ body {
   background-color: gray;
 }
 
+
 @font-face {
-  font-family: "YuGi";
-  src: local("YuGi"), url(./fonts/1.ttf) format("truetype");
+  font-family: "YuGiTitles";
+  src: local("YuGiTitles"), url(./fonts/YuGiTitles.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "YuGiDescription";
+  src: local("YuGiDescription"), url(./fonts/YuGiDescription.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "YuGiAttributes";
+  src: local("YuGiAttributes"), url(./fonts/YuGiAttributes.ttf) format("truetype");
 }

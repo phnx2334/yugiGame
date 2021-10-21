@@ -8,7 +8,7 @@ import {
   IonImg,
   IonButton,
   IonTextarea,
-  useIonToast 
+  useIonToast,
 } from "@ionic/react";
 import React, { useState } from "react";
 import Header from "../Header/Header";
@@ -23,7 +23,6 @@ interface image {
 }
 
 const CRUD: React.FC = () => {
-
   const [present, dismiss] = useIonToast();
 
   const [title, setTitle] = useState<string>();
@@ -97,19 +96,16 @@ const CRUD: React.FC = () => {
       setCopyright("");
 
       present({
-        position:"middle",
-        message: 'The card was created!',
-        duration:1000,
-        cssClass:"toast"
-      })
-     
-      setTimeout(() => {
-        window.location.reload()
-      }, 1000);
-     
-    }
+        position: "middle",
+        message: "The card was created!",
+        duration: 1000,
+        cssClass: "toast",
+      });
 
-    
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   return (
@@ -138,7 +134,6 @@ const CRUD: React.FC = () => {
                   className="type-button"
                   fill={key === type ? "outline" : "clear"}
                   onClick={() => setType(key)}
-                  
                 >
                   <IonImg src={imgTypes[key]} className="img-type" />
                 </IonButton>
@@ -164,11 +159,9 @@ const CRUD: React.FC = () => {
           <div className="image-load">
             <div>
               {image.image ? (
-                <object
-                  id="svgimg"
-                  data={image.image}
-                  type="image/svg+xml"
-                >CardImage</object>
+                <object id="svgimg" data={image.image} type="image/svg+xml">
+                  CardImage
+                </object>
               ) : (
                 <div className="img-frame" role="img"></div>
               )}
@@ -190,7 +183,10 @@ const CRUD: React.FC = () => {
               >
                 Upload image
               </IonButton>
-              <p>Memes are best. Squared images preferred. Max 130 x 130px and 60kb.</p>
+              <p>
+                Memes are best. Squared images preferred. Max 130 x 130px and
+                60kb.
+              </p>
             </>
           </div>
 
