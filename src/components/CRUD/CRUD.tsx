@@ -144,7 +144,7 @@ const CRUD: React.FC = () => {
                   id="svgimg"
                   data={image.image}
                   type="image/svg+xml"
-                ></object>
+                >CardImage</object>
               ) : (
                 <div className="img-frame" role="img"></div>
               )}

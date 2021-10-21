@@ -1,6 +1,5 @@
 import { IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 import React, { useState, useEffect } from "react";
-import cards from "../assets/cards.json";
 import Card from "../components/Cards/Card";
 import Header from "../components/Header/Header";
 import { IcardData } from "../types/card";
@@ -10,10 +9,7 @@ const Main: React.FC = () => {
   const [data, setData] = useState<IcardData[]>([]);
 
   useEffect(() => {
-     if (data.length <= 0) {
-      getCards();
-    }
-    /* setData(cards.items); */
+    getCards();
   }, []);
 
   const getCards = async () => {
@@ -30,17 +26,20 @@ const Main: React.FC = () => {
 
       const data = await response.json();
 
-      const shuffled = shuffleArray(data);
-
-      setData(shuffled);
+      shuffle(data);
     } catch (error) {
       console.log("error obtaining cards", error);
     }
   };
 
+  const shuffle = (cards?: IcardData[]) => {
+    const shuffled = shuffleArray(cards ?? data);
+    setData(shuffled);
+  };
+
   return (
     <IonPage>
-      <Header title={"Cards"}></Header>
+      <Header title={"Cards"} shuffle={shuffle}></Header>
       <IonContent>
         <IonGrid>
           <IonRow>

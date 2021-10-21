@@ -27,8 +27,10 @@ const Cards: React.FC<propsTypes> = (props) => {
 
   const cardFront = (cardData: IcardData) => {
     return (
-      <IonCard  className="yugi-card-front">
-        <IonCardHeader style={{ margin: "0px", padding: "0.5rem 0.5rem 0 0.5rem" }}>
+      <IonCard className="yugi-card-front">
+        <IonCardHeader
+          style={{ margin: "0px", padding: "0.5rem 0.5rem 0 0.5rem" }}
+        >
           <IonCardTitle className="card-header">
             {cardData.title}
             <IonImg src={imageType[props.cardData.type]} className="typeImg" />
