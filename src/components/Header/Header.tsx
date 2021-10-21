@@ -10,6 +10,7 @@ import React from "react";
 
 interface propsTypes {
   title: string;
+  shuffle?: () => void;
 }
 
 const Header: React.FC<propsTypes> = (props) => {
@@ -20,16 +21,16 @@ const Header: React.FC<propsTypes> = (props) => {
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="end">
-          {props.title === "Cards" && <IonButton
-            onClick={() => {
-              window.location.reload();
-            }}
-            shape="round"
-            fill="solid"
-            color="warning"
-          >
-            Shuffle
-          </IonButton>}
+          {props.title === "Cards" && (
+            <IonButton
+              onClick={() => props.shuffle && props.shuffle()}
+              shape="round"
+              fill="solid"
+              color="warning"
+            >
+              Shuffle
+            </IonButton>
+          )}
         </IonButtons>
         <IonTitle>{props.title}</IonTitle>
       </IonToolbar>

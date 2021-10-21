@@ -14,10 +14,10 @@ import { useLocation } from "react-router-dom";
 import {
   copyOutline,
   copySharp,
-  newspaperOutline,
-  newspaperSharp,
-  settingsOutline,
-  settingsSharp,
+  addCircleOutline,
+  addCircleSharp,
+  closeCircleOutline,
+  closeCircleSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -38,20 +38,14 @@ const appPages: AppPage[] = [
   {
     title: "Create Card",
     url: "/page/crud",
-    iosIcon: newspaperOutline,
-    mdIcon: newspaperSharp,
+    iosIcon: addCircleOutline,
+    mdIcon: addCircleSharp,
   },
   {
     title: "Delete Card",
     url: "/page/crudDel",
-    iosIcon: newspaperOutline,
-    mdIcon: newspaperSharp,
-  },
-  {
-    title: "Config",
-    url: "/page/condig",
-    iosIcon: settingsOutline,
-    mdIcon: settingsSharp,
+    iosIcon: closeCircleOutline,
+    mdIcon: closeCircleSharp,
   },
 ];
 

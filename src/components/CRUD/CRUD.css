@@ -1,8 +1,8 @@
-.crud-container  {
+.crud-container {
   display: flex;
   align-content: center;
   justify-content: center;
-  background:transparent;
+  background: transparent;
 }
 
 .card-types-list {
@@ -47,8 +47,7 @@
   overflow-x: hidden;
 }
 
-
-#submitButton{
+#submitButton {
   display: flex;
   align-self: center;
 }
