@@ -19,7 +19,7 @@ interface propsTypes {
 }
 
 const Cards: React.FC<propsTypes> = (props) => {
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(true);
 
   const stars: HTMLIonImgElement[] = new Array(props.cardData.starCount).fill(
     <IonImg src={level} className="starImg" />

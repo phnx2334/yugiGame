@@ -1,24 +1,24 @@
 # yugiGame
 
-##Adolfo's wedding game
+## Adolfo's wedding game
 
 
 This game is all about creating challenges that will be displayed in Yu Gi Oh! like cards, since Adolfo likes so much Yu Gi Oh!.
 
 The idea is to create as many fun challenges as possible, so that we can dare each other to execute them the night we go out.
 
-######Challenges cannot contain anything illegal or that would hurt others physically, morally or sentimentally.
+###### Challenges cannot contain anything illegal or that would hurt others physically, morally or sentimentally.
 
 
 
-##Project requirements:
+## Project requirements:
 
 - GIT
 - Node JS
 - Capacitor CLI
 - Android Studio
 
-##To run this project:
+## To run this project:
 
 1 Clone repository
 2 Switch to dev branch
@@ -26,7 +26,7 @@ The idea is to create as many fun challenges as possible, so that we can dare ea
 4 Run `npm start` command
 
 
-##To compile this project for Android devices:
+## To compile this project for Android devices:
 
 1 Clone repository
 2 Switch to dev branch
